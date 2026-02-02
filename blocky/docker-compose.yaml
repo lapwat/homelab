@@ -1,0 +1,19 @@
+services:
+  blocky:
+    image: spx01/blocky:v0.28.2
+    container_name: blocky
+    restart: always
+    # Optional the instance hostname for logging purpose
+    hostname: blocky-hostname
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "4000:4000/tcp"
+    environment:
+      - TZ=Europe/Paris # Optional to synchronize the log timestamp with host
+    volumes:
+      # Optional to synchronize the log timestamp with host
+      - /etc/localtime:/etc/localtime:ro
+      # config file
+      - ./config.yml:/app/config.yml
+      - ./StevenBlack_hosts.txt:/etc/blocky/StevenBlack_hosts.txt

@@ -1,0 +1,29 @@
+services:
+  radicale:
+    image: tomsquest/docker-radicale:3.6.0.0
+    container_name: radicale
+    ports:
+      - "5232:5232"
+    init: true
+    read_only: true
+    security_opt:
+      - "no-new-privileges:true"
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETUID
+      - SETGID
+      - KILL
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:5232"]
+      interval: 30s
+      retries: 3
+    volumes:
+      - ./data:/data
+      - ./my_custom_config_directory:/config:ro
+    restart: always

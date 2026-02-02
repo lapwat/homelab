@@ -1,0 +1,24 @@
+upstreams:
+  groups:
+    default:
+#         - https://dns.digitale-gesellschaft.ch/dns-query
+        - https://1.1.1.1/dns-query
+#       - 46.182.19.48
+#       - 80.241.218.68
+#       - tcp-tls:fdns1.dismail.de:853
+
+blocking:
+  denylists:
+    ads:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+  clientGroupsBlock:
+    default:
+      - ads
+
+ports:
+  dns: 53
+  http: 4000
+
+customDNS:
+  mapping:
+    mabbox.bytel.fr: 192.168.1.253
