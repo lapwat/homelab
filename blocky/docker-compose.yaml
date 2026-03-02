@@ -1,6 +1,6 @@
 services:
   blocky:
-    image: spx01/blocky:v0.28.2
+    image: spx01/blocky:v0.29.0
     container_name: blocky
     restart: always
     # Optional the instance hostname for logging purpose
