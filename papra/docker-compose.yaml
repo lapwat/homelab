@@ -1,0 +1,13 @@
+services:
+  papra:
+    container_name: papra
+    image: ghcr.io/papra-hq/papra:26.4.0-rootless
+    env_file: papra.env
+    environment:
+      APP_BASE_URL: http://mini:1221
+    restart: unless-stopped
+    ports:
+      - "1221:1221"
+    volumes:
+      - ./app-data:/app/app-data
+    user: "${UID}:${GID}"
